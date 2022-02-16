@@ -1,8 +1,16 @@
 <br>
-<%= @restaurant.name %>
+<%= @restaurant.name %></strong>
 <br>
 <strong>Category: </strong><%= @restaurant.category %>
 <br>
 <strong>Address: </strong><%= @restaurant.address %>
 <br>
 <%= link_to "Back to all restaurants", restaurants_path  %>
+<br>
+<%# <%= link_to "Post a review", new_restaurant_review_path(@restaurant)  %>
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :rating , collection:([1,2,3,4,5])%>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>
+<br>
